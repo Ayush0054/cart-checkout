@@ -1,5 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
+:root {
+  --background: hsl(0, 0%, 100%);
+  --foreground: hsl(240, 10%, 3.9%);
+  --primary: hsl(240, 5.9%, 10%);
+  --primary-foreground: hsl(0, 0%, 98%);
+}
 /* "theme":{"--background":"hsl(20, 14.3%, 4.1%)","--foreground":"hsl(0, 0%, 95%)","--primary":"hsl(346.8, 77.2%, 49.8%)","--primary-foreground":"hsl(355.7, 100%, 97.3%)"} */
+body {
+  /* background-color: rgb(246, 243, 250); */
+  /* height: 90vh; */
+  /* height: 100%; */
+}
