@@ -1,9 +1,20 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useStore } from "../store";
-import { Button, Card, Image, ScrollShadow } from "@nextui-org/react";
+// import { useStore } from "../store";
+import {
+  Button,
+  Card,
+  Chip,
+  Image,
+  Input,
+  ScrollShadow,
+  Table,
+} from "@nextui-org/react";
 import BreadCrumbs from "../components/breadcrumbs";
-interface Product {
+import { useStore } from "../store";
+import { FaShoppingBag } from "react-icons/fa";
+import CheckoutCard from "../components/checkout-page/checkout-card";
+export interface Product {
   id: number;
   title: string;
   image: string;
@@ -11,97 +22,65 @@ interface Product {
   quantity: number;
 }
 function Page() {
-  const [orders, setOrders] = useState({ products: [] });
-
-  let total = 0;
-  const fetchOrders = async () => {
-    const response = await fetch(
-      "https://groww-intern-assignment.vercel.app/v1/api/order-details"
-    );
-    const orders = await response.json();
-    setOrders(orders);
-
-    console.log("order", orders);
-  };
-  const totalPrice = orders.products.reduce(
-    //@ts-ignore
-    (sum, product) => sum + product.price,
-    0
-  );
+  const [coupon, setCoupon] = useState("");
+  const { orderDetails, fetchOrderDetails } = useStore();
+  const [applied, setApplied] = useState(false);
 
   useEffect(() => {
-    fetchOrders();
+    fetchOrderDetails();
   }, []);
-  //   const { orderDetails, fetchOrderDetails } = useStore();
-
-  //   useEffect(() => {
-  //     // Fetch order details when the component mounts
-  //     fetchOrderDetails();
-  //   }, []);
-
+  const vouch = () => {
+    if (coupon.trim() === "") {
+      setApplied(false);
+    }
+    setApplied(true);
+  };
   return (
     <div>
-      <div className=" flex flex-col justify-center items-center text-center mt-3">
-        {/* <h1>Checkout Page</h1> */}
-        <BreadCrumbs />
-      </div>
-      {orders.products.length === 0 ? (
+      {orderDetails.products.length === 0 ? (
         <h1 className=" text-center font-semibold text-xl">
           Empty cart. Add items to proceed.
         </h1>
       ) : (
         <>
-          <div className=" md:flex md:justify-center ">
-            <ScrollShadow
-              hideScrollBar
-              className=" md:h-[90vh]  h-[600px] bg-slate-50 rounded-md shadow-md m-5 "
-            >
-              {orders.products.map((product: Product) => (
-                <div key={product.id} className="  p-10 m-5 border-b-2  ">
-                  <div className="flex gap-5 ">
-                    <div className=" grid text-center gap-5">
+          <div className=" md:flex md:justify-evenly md:items-start grid justify-items-center ">
+            <ScrollShadow hideScrollBar className=" md:h-[90vh]  h-[600px]    ">
+              {orderDetails.products.map((product: Product) => (
+                <Card
+                  key={product.id}
+                  className="  p-10 m-5 border-2  md:w-[800px] md:h-[180px]   "
+                >
+                  <div className="flex items-center ">
+                    <div className=" flex items-center gap-10">
                       <Image
                         isZoomed
-                        width={200}
-                        height={200}
+                        width={70}
+                        height={70}
                         src={product.image}
+                        className=" min-w-[70px] min-h-[70px] max-w-[70px] max-h-[70px]"
                         alt=""
                       />
-                      <h1>{product.quantity}</h1>
+
+                      <h1 className=" md:font-semibold md:text-xl text-xs pr-5 ">
+                        {product.title.substring(0, 10)}
+                      </h1>
                     </div>
-                    <div className=" flex flex-col justify-center">
-                      <h1 className="font-semibold">{product.title}</h1>
-                      <h1 className="font-semibold text-purple-800">
-                        {product.price}
+
+                    <div className="ml-auto flex items-center space-x-4">
+                      <h1 className="font-bold text-purple-800 md:text-lg text-sm ">
+                        {product.price}$
+                      </h1>
+                      <h1 className="font-semibold text-purple-800 md:text-lg flex items-center gap-1 text-sm ">
+                        {product.quantity}
+                        <FaShoppingBag />
                       </h1>
                     </div>
                   </div>
-                </div>
+                </Card>
               ))}
             </ScrollShadow>
 
-            <div className=" p-6 bg-slate-50 rounded-md shadow-md m-5 ">
-              <h1 className="text-xl font-semibold mb-4">Order Summary</h1>
-              {/* <div className="flex justify-between mb-2">
-          <span>Subtotal</span>
-          <span>$100.00</span>
-        </div> */}
-              <div className="flex justify-between mb-2">
-                <span>Shipping</span>
-                <span>$5.00</span>
-              </div>
-              <div className="flex justify-between mb-4">
-                <span className="font-semibold">Total</span>
-                <span className="font-semibold">{totalPrice}</span>
-              </div>
-              <Button
-                color="secondary"
-                className="w-full"
-                onClick={() => alert("Proceed to Payment")}
-              >
-                Proceed to Payment
-              </Button>
-            </div>
+            <CheckoutCard />
           </div>
         </>
       )}
