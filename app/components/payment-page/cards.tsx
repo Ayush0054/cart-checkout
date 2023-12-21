@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Lottie from "lottie-react";
-import cardgif from "../../icons/card.json";
+import cardgif from "../../icons-lotties/card.json";
 import { Input } from "@nextui-org/react";
 function Cards({
   cardNumber,

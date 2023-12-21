@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import Lottie from "lottie-react";
-import upigif from "../../icons/upi.json";
+import upigif from "../../icons-lotties/upi.json";
 import { Input } from "@nextui-org/react";
 function Upi({ upiId, setUpiId }: { upiId: string; setUpiId: any }) {
   const style = {

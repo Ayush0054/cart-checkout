@@ -42,8 +42,8 @@
 
 **Button**
 
-- Primary ![Alt text](<Screenshot from 2023-12-21 18-55-33.png>)
-- Secondary ![Alt text](<Screenshot from 2023-12-21 18-56-02.png>)
+- ![Alt text](<Screenshot from 2023-12-21 18-55-33.png>)
+- ![Alt text](<Screenshot from 2023-12-21 18-56-02.png>)
 
 ---
 

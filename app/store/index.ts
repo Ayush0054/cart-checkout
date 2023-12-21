@@ -35,7 +35,6 @@ export const useStore = create<Store>((set) => ({
         "https://groww-intern-assignment.vercel.app/v1/api/order-details"
       );
       const data = await response.json();
-      console.log(data, "data::");
 
       const totalPrice = data.products.reduce(
         //@ts-ignore

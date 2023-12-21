@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useStore } from "../store";
-import CheckIcon from "../icons/checkIcon";
+import CheckIcon from "../icons-lotties/checkIcon";
 import {
   Button,
   Card,
