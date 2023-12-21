@@ -16,6 +16,7 @@ function Upi({ upiId, setUpiId }: { upiId: string; setUpiId: any }) {
         type="text"
         label="Upi Id"
         defaultValue="ayush@upi"
+        maxLength={15}
         accept="text"
         description="We'll never share your upi with anyone else."
         className="max-w-xs "

@@ -11,8 +11,10 @@ import {
 import React, { useEffect, useState } from "react";
 import { useStore } from "../store";
 import CheckIcon from "../icons/checkIcon";
+import { useRouter } from "next/navigation";
 
 function Page() {
+  const { push } = useRouter();
   const {
     orderDetails,
     paymentMethods,
@@ -27,6 +29,9 @@ function Page() {
     setResult(randomResult);
 
     setVariant(randomResult === "success" ? "success" : "danger");
+    if (selectedPaymentMethod === "") {
+      push("checkout");
+    }
   };
   useEffect(() => {
     getRandomResult();
@@ -34,9 +39,11 @@ function Page() {
   return (
     <div className="flex flex-col justify-center items-center m-24 ">
       <Card className="md:w-full w-[350px] max-w-xl rounded-none shadow-none ">
-        <div className=" flex justify-center m-5">
-          <CheckIcon className="text-purple-700 w-16 h-16 border-2 border-purple-700 rounded-full p-2 " />
-        </div>
+        {result == "success" && (
+          <div className=" flex justify-center m-5">
+            <CheckIcon className="text-purple-700 w-16 h-16 border-2 border-purple-700 rounded-full p-2 " />
+          </div>
+        )}
         <CardHeader>
           <h1 className=" font-bold text-2xl">Order Confirmation</h1>
         </CardHeader>

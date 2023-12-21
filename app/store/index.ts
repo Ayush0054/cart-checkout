@@ -1,7 +1,7 @@
 "use client";
-// store/index.ts
+
 import { create } from "zustand";
-import { Product } from "../checkout/page";
+import { Product } from "../interfaces/product";
 
 interface OrderDetails {
   products: Product[];
@@ -31,25 +31,26 @@ export const useStore = create<Store>((set) => ({
   selectedPaymentMethod: "",
   fetchOrderDetails: async () => {
     try {
-      // Fetch order details from the API
-      const response = await fetch("/api");
+      const response = await fetch(
+        "https://groww-intern-assignment.vercel.app/v1/api/order-details"
+      );
       const data = await response.json();
       console.log(data, "data::");
 
-      const totalPrice = data.output.products.reduce(
+      const totalPrice = data.products.reduce(
         //@ts-ignore
         (sum, product) => sum + product.price,
         0
       );
-      // Set the order details in the store
+
       set((state) => ({
         orderDetails: {
-          products: data.output.products || [],
+          products: data.products || [],
           total: totalPrice,
           loading: false,
           error: null,
         },
-        paymentMethods: data.output.paymentMethods,
+        paymentMethods: data.paymentMethods,
         selectedPaymentMethod: state.selectedPaymentMethod || "",
       }));
     } catch (error) {

@@ -42,9 +42,7 @@ function PaymentCard({
       alert("Please select a payment method");
     }
   };
-  useEffect(() => {
-    fetchOrderDetails();
-  }, []);
+
   return (
     <Card className=" p-5  m-14  md:w-[350px] w-3/4  border-2   ">
       <div className="flex justify-between mb-4">

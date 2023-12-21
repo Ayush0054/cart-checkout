@@ -1,11 +1,11 @@
 "use client";
-import { Accordion, AccordionItem } from "@nextui-org/react";
-
 import React, { useEffect, useState } from "react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
 import { useStore } from "../store";
 import PaymentCard from "../components/payment-page/payment-card";
 import Upi from "../components/payment-page/upi";
 import Cards from "../components/payment-page/cards";
+import BreadCrumbs from "../components/breadcrumbs";
 
 function Page() {
   const { paymentMethods, fetchOrderDetails, setSelectedPaymentMethod } =
@@ -14,42 +14,45 @@ function Page() {
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");
   const [cvv, setCvv] = useState("");
-  useEffect(() => {
-    fetchOrderDetails();
-  }, []);
+
   return (
     <div className=" md:flex md:justify-evenly md:items-start  grid justify-items-center place-items-end ">
-      <Accordion
-        variant="splitted"
-        className="  p-10 m-5  md:w-[800px] md:h-[180px]   "
-      >
-        <AccordionItem
-          key="1"
-          aria-label="Accordion 1"
-          title={paymentMethods[0]}
-          //@ts-ignore
-          className="font-semibold "
-          onPress={() => setSelectedPaymentMethod(paymentMethods[0])}
+      <div className=" md:grid md:justify-items-start ">
+        <div className=" max-sm:hidden ml-2">
+          <BreadCrumbs />
+        </div>
+        <Accordion
+          variant="splitted"
+          className=" mt-5  md:w-[800px] md:h-[280px] h-[400px] w-[350px]  "
         >
-          <Upi upiId={upiId} setUpiId={setUpiId} />
-        </AccordionItem>
-        <AccordionItem
-          key="2"
-          aria-label="Accordion 2"
-          title={paymentMethods[1]}
-          className="font-semibold "
-          onPress={() => setSelectedPaymentMethod(paymentMethods[1])}
-        >
-          <Cards
-            cardNumber={cardNumber}
-            setCardNumber={setCardNumber}
-            expiry={expiry}
-            setExpiry={setExpiry}
-            cvv={cvv}
-            setCvv={setCvv}
-          />
-        </AccordionItem>
-      </Accordion>
+          <AccordionItem
+            key="1"
+            aria-label="Accordion 1"
+            title={paymentMethods[0]}
+            //@ts-ignore
+            className="font-semibold "
+            onPress={() => setSelectedPaymentMethod(paymentMethods[0])}
+          >
+            <Upi upiId={upiId} setUpiId={setUpiId} />
+          </AccordionItem>
+          <AccordionItem
+            key="2"
+            aria-label="Accordion 2"
+            title={paymentMethods[1]}
+            className="font-semibold "
+            onPress={() => setSelectedPaymentMethod(paymentMethods[1])}
+          >
+            <Cards
+              cardNumber={cardNumber}
+              setCardNumber={setCardNumber}
+              expiry={expiry}
+              setExpiry={setExpiry}
+              cvv={cvv}
+              setCvv={setCvv}
+            />
+          </AccordionItem>
+        </Accordion>
+      </div>
       <PaymentCard
         upiId={upiId}
         cardNumber={cardNumber}

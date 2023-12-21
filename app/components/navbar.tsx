@@ -35,7 +35,7 @@ function Navbar() {
           data?.merchantName
         }
       />
-      <BreadCrumbs />
+
       <FaShoppingCart className=" h-8 w-8 text-purple-300 " />
     </div>
   );

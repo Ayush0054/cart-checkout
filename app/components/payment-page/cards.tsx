@@ -32,7 +32,7 @@ function Cards({
           accept="number"
           maxLength={10}
           label="Card number"
-          description="We'll never share your upi with anyone else."
+          description="We'll never share your details with anyone else."
           className="max-w-xs "
           color="secondary"
         ></Input>
