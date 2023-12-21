@@ -20,6 +20,9 @@ function PaymentCard({
     if (selectedPaymentMethod === "UPI") {
       if (upiId === "") {
         alert("Please enter a  UPI ID");
+      }
+      if (!upiId.includes("@")) {
+        alert("Please enter a valid UPI ID");
       } else {
         push("/confirmation");
       }
@@ -27,6 +30,10 @@ function PaymentCard({
     if (selectedPaymentMethod === "CARDS") {
       if (cardNumber === "" || expiry === "" || cvv === "") {
         alert("Please enter all the details");
+      }
+      const numberPattern = /^\d+$/;
+      if (numberPattern.test(cardNumber) === false) {
+        alert("Please enter a valid card number");
       } else {
         push("/confirmation");
       }
