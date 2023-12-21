@@ -76,12 +76,20 @@ function Page() {
             </Chip>
           </div>
         </CardBody>
-        <CardFooter className="flex items-center justify-center">
+        <CardFooter className="flex items-center justify-center gap-5">
           <Button
             color="secondary"
             className=" md:text-lg text-sm font-semibold rounded-md "
           >
-            CHECK STATUS
+            Check Status
+          </Button>
+          <Button
+            color="secondary"
+            variant="ghost"
+            className=" md:text-lg text-sm font-semibold rounded-md "
+            onClick={() => push("/checkout")}
+          >
+            Go Back
           </Button>
         </CardFooter>
       </Card>
