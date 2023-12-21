@@ -42,8 +42,8 @@
 
 **Button**
 
-- ![Alt text](<Screenshot from 2023-12-21 18-55-33.png>)
-- ![Alt text](<Screenshot from 2023-12-21 18-56-02.png>)
+- ![Alt text](<screenshots/Screenshot from 2023-12-21 18-55-33.png>)
+- ![Alt text](<screenshots/Screenshot from 2023-12-21 18-56-02.png>)
 
 ---
 
@@ -66,6 +66,16 @@
         - components
     - Store
       - Zustand store
+
+---
+
+## Screenshots
+
+![Alt text](<screenshots/Screenshot from 2023-12-21 23-11-41.png>)
+![Alt text](<screenshots/Screenshot from 2023-12-21 23-11-51.png>)
+![Alt text](<screenshots/Screenshot from 2023-12-21 23-11-55.png>)
+![Alt text](<screenshots/Screenshot from 2023-12-21 23-12-08.png>)
+![Alt text](<screenshots/Screenshot from 2023-12-21 23-12-39.png>)
 
 ---
 
