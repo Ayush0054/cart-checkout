@@ -16,7 +16,7 @@ function CheckoutCard() {
     setApplied(true);
   };
   return (
-    <Card className=" p-5  md:m-5 w-[350px]   border-2   ">
+    <Card className=" p-5  md:m-5 w-[350px]   border-2   hover:shadow-xl   ">
       <h1 className="md:text-xl text-md font-bold mb-1 text-gray-600">
         Delivery Detail
       </h1>
@@ -28,7 +28,6 @@ function CheckoutCard() {
         <div className=" flex justify-center gap-3">
           <Input
             type="text"
-            // label="Expiry"
             value={coupon}
             onChange={(e) => setCoupon(e.target.value)}
             minLength={5}
@@ -59,12 +58,14 @@ function CheckoutCard() {
       </div>
       <div className="flex justify-between mb-2">
         <span className=" md:text-md  text-sm ">Order Amount</span>
-        <span className=" text-md text-gray-500"> {orderDetails.total}</span>
+        <span className=" text-md text-gray-500 ">
+          ${orderDetails.total.toFixed(2)}
+        </span>
       </div>
       <div className="flex justify-between mb-4">
         <span className=" md:text-xl text-sm text-gray-600">Total</span>
         <span className=" md:text-2xl font-semibold">
-          {orderDetails.total + 5}
+          ${orderDetails.total.toFixed(2) + 5}
         </span>
       </div>
       <Button
