@@ -1,57 +1,61 @@
 "use client";
-import { Button, Card } from "@nextui-org/react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+
 import React, { useEffect, useState } from "react";
-import BreadCrumbs from "../components/breadcrumbs";
+import { useStore } from "../store";
+import PaymentCard from "../components/payment-page/payment-card";
+import Upi from "../components/payment-page/upi";
+import Cards from "../components/payment-page/cards";
 
 function Page() {
-  const [orders, setOrders] = useState([]);
-  const [buttonColor, setButtonColor] = useState("bg-blue-700");
-  let total = 0;
-  const handleButtonClick = () => {
-    // Randomly generate a color (you can customize this logic)
-    const randomColor = `bg-purple-500`;
-    setButtonColor(randomColor);
-  };
-  const fetchOrders = async () => {
-    const response = await fetch(
-      "https://groww-intern-assignment.vercel.app/v1/api/order-details"
-    );
-    const orders = await response.json();
-    setOrders(orders.paymentMethods);
-
-    console.log("order", orders);
-  };
-  //   const totalPrice = orders.products.reduce(
-  //     //@ts-ignore
-  //     (sum, product) => sum + product.price,
-  //     0
-  //   );
+  const { paymentMethods, fetchOrderDetails, setSelectedPaymentMethod } =
+    useStore();
+  const [upiId, setUpiId] = useState("");
+  const [cardNumber, setCardNumber] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [cvv, setCvv] = useState("");
   useEffect(() => {
-    fetchOrders();
+    fetchOrderDetails();
   }, []);
   return (
-    <div className="p-6 mt-8">
-      <div className=" flex flex-col justify-center items-center text-center">
-        {/* <h1 className="text-xl font-semibold  my-4">Payment Methods</h1> */}
-        <BreadCrumbs />
-      </div>
-      {orders.map((order: any) => (
-        <Button
-          key={order.id}
-          className="  m-5  bg-purple-700 text-white  "
-          onClick={handleButtonClick}
+    <div className=" md:flex md:justify-evenly md:items-start  grid justify-items-center place-items-end ">
+      <Accordion
+        variant="splitted"
+        className="  p-10 m-5  md:w-[800px] md:h-[180px]   "
+      >
+        <AccordionItem
+          key="1"
+          aria-label="Accordion 1"
+          title={paymentMethods[0]}
+          //@ts-ignore
+          className="font-semibold "
+          onPress={() => setSelectedPaymentMethod(paymentMethods[0])}
         >
-          {order}
-        </Button>
-      ))}
-      {/* <div className="mt-8 bg-white p-6 rounded-md shadow-md">
-        <h1 className="text-xl font-semibold mb-4">Payment Methods</h1>
-        <div className="flex flex-col space-y-4">
-          <Button className="bg-blue-500 text-white">Credit Card</Button>
-          <Button className="bg-green-500 text-white">PayPal</Button>
-          <Button className="bg-yellow-500 text-white">Bank Transfer</Button>
-        </div>
-      </div> */}
+          <Upi upiId={upiId} setUpiId={setUpiId} />
+        </AccordionItem>
+        <AccordionItem
+          key="2"
+          aria-label="Accordion 2"
+          title={paymentMethods[1]}
+          className="font-semibold "
+          onPress={() => setSelectedPaymentMethod(paymentMethods[1])}
+        >
+          <Cards
+            cardNumber={cardNumber}
+            setCardNumber={setCardNumber}
+            expiry={expiry}
+            setExpiry={setExpiry}
+            cvv={cvv}
+            setCvv={setCvv}
+          />
+        </AccordionItem>
+      </Accordion>
+      <PaymentCard
+        upiId={upiId}
+        cardNumber={cardNumber}
+        expiry={expiry}
+        cvv={cvv}
+      />
     </div>
   );
 }
