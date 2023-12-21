@@ -4,6 +4,7 @@ import { useStore } from "../store";
 
 import CheckoutCard from "../components/checkout-page/checkout-card";
 import ProductCart from "../components/checkout-page/product-cart";
+import EmptyCart from "../components/checkout-page/empty-cart";
 
 function Page() {
   const { orderDetails, fetchOrderDetails } = useStore();
@@ -15,9 +16,7 @@ function Page() {
   return (
     <div>
       {orderDetails.products.length === 0 ? (
-        <h1 className=" text-center font-semibold text-xl">
-          Empty cart. Add items to proceed.
-        </h1>
+        <EmptyCart />
       ) : (
         <>
           <div className=" lg:flex lg:justify-evenly lg:items-start grid justify-items-center    ">
