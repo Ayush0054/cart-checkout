@@ -1,24 +1,17 @@
 "use client";
 import React, { useEffect, useState } from "react";
-
 import { useStore } from "../store";
+
 import CheckoutCard from "../components/checkout-page/checkout-card";
 import ProductCart from "../components/checkout-page/product-cart";
 
 function Page() {
-  const [coupon, setCoupon] = useState("");
   const { orderDetails, fetchOrderDetails } = useStore();
-  const [applied, setApplied] = useState(false);
 
   useEffect(() => {
     fetchOrderDetails();
   }, []);
-  const vouch = () => {
-    if (coupon.trim() === "") {
-      setApplied(false);
-    }
-    setApplied(true);
-  };
+
   return (
     <div>
       {orderDetails.products.length === 0 ? (

@@ -1,4 +1,8 @@
 "use client";
+import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useStore } from "../store";
+import CheckIcon from "../icons/checkIcon";
 import {
   Button,
   Card,
@@ -6,12 +10,7 @@ import {
   CardFooter,
   CardHeader,
   Chip,
-  Link,
 } from "@nextui-org/react";
-import React, { useEffect, useState } from "react";
-import { useStore } from "../store";
-import CheckIcon from "../icons/checkIcon";
-import { useRouter } from "next/navigation";
 
 function Page() {
   const { push } = useRouter();

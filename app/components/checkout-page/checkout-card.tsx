@@ -1,8 +1,8 @@
 "use client";
-import { Button, Card, Chip, Input } from "@nextui-org/react";
 import React, { useState } from "react";
 import { useStore } from "../../store";
 import { useRouter } from "next/navigation";
+import { Button, Card, Chip, Input } from "@nextui-org/react";
 
 function CheckoutCard() {
   const { push } = useRouter();
@@ -16,7 +16,7 @@ function CheckoutCard() {
     setApplied(true);
   };
   return (
-    <Card className=" p-5  md:m-5 w-[350px]   border-2   hover:shadow-xl   ">
+    <Card className=" p-5  md:m-14 w-[350px]   border-2   hover:shadow-xl   ">
       <h1 className="md:text-xl text-md font-bold mb-1 text-gray-600">
         Delivery Detail
       </h1>

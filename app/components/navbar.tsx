@@ -1,9 +1,6 @@
 "use client";
-// import Image from "next/image";
-// import { Image } from "@nextui-org/react";
-import React, { use, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
-import BreadCrumbs from "./breadcrumbs";
 interface LOGO {
   merchantLogo: string;
   merchant: string;
@@ -16,9 +13,7 @@ function Navbar() {
     );
     const data = await response.json();
     setData(data);
-    console.log(data);
   };
-  console.log(data?.merchantLogo);
 
   useEffect(() => {
     fetchNav();
@@ -28,8 +23,6 @@ function Navbar() {
       <img
         src={data?.merchantLogo}
         className=" w-[40px] h-[40px] "
-        // width={70}
-        // height={70}
         alt={
           //@ts-ignore
           data?.merchantName

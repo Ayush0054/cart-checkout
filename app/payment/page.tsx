@@ -1,15 +1,14 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import { Accordion, AccordionItem } from "@nextui-org/react";
+import React, { useState } from "react";
 import { useStore } from "../store";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import BreadCrumbs from "../components/breadcrumbs";
 import PaymentCard from "../components/payment-page/payment-card";
 import Upi from "../components/payment-page/upi";
 import Cards from "../components/payment-page/cards";
-import BreadCrumbs from "../components/breadcrumbs";
 
 function Page() {
-  const { paymentMethods, fetchOrderDetails, setSelectedPaymentMethod } =
-    useStore();
+  const { paymentMethods, setSelectedPaymentMethod } = useStore();
   const [upiId, setUpiId] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [expiry, setExpiry] = useState("");

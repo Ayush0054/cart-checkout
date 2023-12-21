@@ -1,9 +1,9 @@
 "use client";
-import { Product } from "@/app/interfaces/product";
-import { useStore } from "@/app/store";
-import { Card, Image, ScrollShadow } from "@nextui-org/react";
 import React from "react";
+import { useStore } from "@/app/store";
+import { Product } from "@/app/interfaces/product";
 import { FaShoppingBag } from "react-icons/fa";
+import { Card, Image, ScrollShadow } from "@nextui-org/react";
 import BreadCrumbs from "../breadcrumbs";
 
 function ProductCart() {

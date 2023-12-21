@@ -15,7 +15,7 @@ function PaymentCard({
   cvv: string;
 }) {
   const { push } = useRouter();
-  const { orderDetails, fetchOrderDetails, selectedPaymentMethod } = useStore();
+  const { orderDetails, selectedPaymentMethod } = useStore();
   const handlePaymentMethodChange = () => {
     if (selectedPaymentMethod === "UPI") {
       if (upiId === "") {
