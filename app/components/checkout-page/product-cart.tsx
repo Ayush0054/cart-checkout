@@ -1,3 +1,4 @@
+"use client";
 import { Product } from "@/app/interfaces/product";
 import { useStore } from "@/app/store";
 import { Card, Image, ScrollShadow } from "@nextui-org/react";
