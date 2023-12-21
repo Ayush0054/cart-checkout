@@ -47,6 +47,28 @@
 
 ---
 
+## Project Folder Structure
+
+- **project**
+  - _app_
+    - Checkout
+      - Page.tsx
+    - Payement
+      - Page.tsx
+    - Confirmation
+      - Page.tsx
+    - Components
+      - Navbar
+      - Breadcrumbs
+      - checkout-page
+        - components
+      - payment-page
+        - components
+    - Store
+      - Zustand store
+
+---
+
 ## Getting Started
 
 To run the project locally, follow these steps:
