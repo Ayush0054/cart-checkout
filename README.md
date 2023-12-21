@@ -28,21 +28,24 @@
 
 ### Design Choices
 
-- **theme**
-- Purple
-- White with purple tint
-- **Typography**
-- Gray
-- purple
-- font semibold,normal
-- **Component used**
-- Nextui card
-- Nextui shadowScroll
-- Nextui Input
-- Nextui Button
+**theme**
+Purple
+White with purple tint
+**Typography**
+Gray
+purple
+font semibold,normal
+**Component used**
+Nextui card
+Nextui shadowScroll
+Nextui Input
+Nextui Button
 
-- **Button**
+**Button**
+
+- Primary
   ![Alt text](<Screenshot from 2023-12-21 18-55-33.png>)
+- Secondary
   ![Alt text](<Screenshot from 2023-12-21 18-56-02.png>)
 
 ---
