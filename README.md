@@ -2,7 +2,7 @@
 
 ### Tech Stack
 
-- **NextJS :**
+- **NextJS with App Router:**
 - **Zustand:**
 - **NextUI :**
 
